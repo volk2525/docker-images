@@ -1,2 +1,2 @@
 #!/bin/sh
-docker build -t glassfishfss .
+docker build -t app-server-fss .

@@ -1,10 +1,11 @@
-# Образ Glass Fish используемый для приложений FSS
+# Базовый образ Glass Fish 4.1.2 c oracle-java-8
 
-Собрать образ локально
-sudo ./build.sh
+Собрать образ  
+docker build -t glassfish-412-java-8 .
 
 Запустить контейнер  
-sudo ./run.sh
+sudo docker run -p 4848:4848 -p 8080:8080 -p 8181:8181 \
+ -e ADMIN_PASSWORD=root glassfish-412-java-8
 
 где ADMIN_PASSWORD=root - пароль, который будет установлен пользователю admin 
 сервера приложений Glass Fish 
