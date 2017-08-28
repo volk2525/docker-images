@@ -15,10 +15,19 @@ echo "AS_ADMIN_PASSWORD=${ADMIN_PASSWORD}" > /tmp/glassfishpwd
 # в соответствии с https://docs.oracle.com/cd/E19879-01/820-4335/gicbh/index.html
 # создадим пулы и создадим-jndi ресурсы
 asadmin --user=admin --passwordfile=/tmp/glassfishpwd create-jdbc-connection-pool \
-  --datasourceclassname oracle.jdbc.pool.OracleConnectionPoolDataSource \
-  --restype javax.sql.ConnectionPoolDataSource \
+  --datasourceclassname oracle.jdbc.pool.OracleDataSource \
+  --restype javax.sql.DataSource \
   --property user=FSS_CR_NSPZ:password=Manager1:url="jdbc\:oracle\:thin\:@217.74.37.141\:1521\:FSSDEV" \
+  --idletimeout 300 \
+  --maxpoolsize 32 \
+  --maxwait 5000 \
+  --statementtimeout 30 \
+  --steadypoolsize 8 \
+  --validationmethod custom-validation \
+  --validationclassname org.glassfish.api.jdbc.validation.OracleConnectionValidation \
+  --isconnectvalidatereq true \
   FSS_CR_NSPZ
+
 asadmin --user=admin --passwordfile=/tmp/glassfishpwd create-jdbc-resource \
   --connectionpoolid FSS_CR_NSPZ jdbc/FSS_CR_NSPZ
 
