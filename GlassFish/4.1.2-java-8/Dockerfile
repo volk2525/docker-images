@@ -20,7 +20,13 @@ ENV GLASSFISH_PKG=glassfish-4.1.2.zip \
 # Setup password file
 # Enable DAS
 
-RUN yum -y install unzip java-1.8.0-openjdk-devel && \
+
+
+RUN yum -y install unzip wget && \
+    wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" \
+      http://download.oracle.com/otn-pub/java/jdk/8u144-b01/090f390dda5b47b9b721c7dfaa008135/jre-8u144-linux-x64.rpm && \
+    yum -y localinstall ./jre-8u144-linux-x64.rpm && \
+    rm ./jre-8u144-linux-x64.rpm && \
     curl -O $GLASSFISH_URL && \
     echo "$MD5 *$GLASSFISH_PKG" | md5sum -c - && \
     unzip -o $GLASSFISH_PKG && \
@@ -37,11 +43,5 @@ EXPOSE 4848 8080 8181
 # Start asadmin console and the domain
 CMD ["asadmin", "start-domain", "-v"]
 
-#это должен быть базовый сервер 4.1.2 на java 8, который кастомизируется в проектах введением ресурсных пулов и регистрацией пакетов.
-#
-#создавать пулы через мануал
-#Creating a JDBC Connection Pool and JDBC Resource Using the CLI
-#https://docs.oracle.com/cd/E19316-01/820-4335/gibzk/index.html
-#
 #открыть ssh
 
