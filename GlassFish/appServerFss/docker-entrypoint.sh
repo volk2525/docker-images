@@ -13,6 +13,7 @@ asadmin start-domain
 echo "AS_ADMIN_PASSWORD=${ADMIN_PASSWORD}" > /tmp/glassfishpwd
 
 # в соответствии с https://docs.oracle.com/cd/E19879-01/820-4335/gicbh/index.html
+# https://docs.oracle.com/cd/E19316-01/820-4335/gibzk/index.html
 # создадим пулы и создадим-jndi ресурсы
 asadmin --user=admin --passwordfile=/tmp/glassfishpwd create-jdbc-connection-pool \
   --datasourceclassname oracle.jdbc.pool.OracleDataSource \
@@ -63,14 +64,8 @@ asadmin --user=admin --passwordfile=/tmp/glassfishpwd create-jdbc-connection-poo
 asadmin --user=admin --passwordfile=/tmp/glassfishpwd create-jdbc-resource \
   --connectionpoolid FSS_CR_TSR jdbc/FSS_CR_TSR
 
-asadmin --user=admin --passwordfile=/tmp/glassfishpwd create-jdbc-connection-pool \
-  --datasourceclassname oracle.jdbc.pool.OracleConnectionPoolDataSource \
-  --restype javax.sql.ConnectionPoolDataSource \
-  --property user=FSS_CR_LIFERAY:password=Manager1:url="jdbc\:oracle\:thin\:@217.74.37.141\:1521\:FSSDEV" \
-  FSS_CR_LIFERAY
-asadmin --user=admin --passwordfile=/tmp/glassfishpwd create-jdbc-resource \
-  --connectionpoolid FSS_CR_LIFERAY jdbc/FSS_CR_LIFERAY
-
+# тестовый пользователь на период дебага
+asadmin create-jvm-options -Dibs.util.security.hardcoded.userid=48795
 asadmin --user=admin --passwordfile=/tmp/glassfishpwd enable-secure-admin
 asadmin --user=admin stop-domain
 rm /tmp/glassfishpwd
