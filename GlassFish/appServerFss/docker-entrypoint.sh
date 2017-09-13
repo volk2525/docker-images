@@ -33,32 +33,32 @@ asadmin --user=admin --passwordfile=/tmp/glassfishpwd create-jdbc-resource \
   --connectionpoolid FSS_CR_NSPZ jdbc/FSS_CR_NSPZ
 
 asadmin --user=admin --passwordfile=/tmp/glassfishpwd create-jdbc-connection-pool \
-  --datasourceclassname oracle.jdbc.pool.OracleConnectionPoolDataSource \
-  --restype javax.sql.ConnectionPoolDataSource \
+  --datasourceclassname oracle.jdbc.pool.OracleDataSource \
+  --restype javax.sql.DataSource \
   --property user=FSS_CR_SKL:password=Manager1:url="jdbc\:oracle\:thin\:@217.74.37.141\:1521\:FSSDEV" \
   FSS_CR_SKL
 asadmin --user=admin --passwordfile=/tmp/glassfishpwd create-jdbc-resource \
   --connectionpoolid FSS_CR_SKL jdbc/FSS_CR_SKL
 
 asadmin --user=admin --passwordfile=/tmp/glassfishpwd create-jdbc-connection-pool \
-  --datasourceclassname oracle.jdbc.pool.OracleConnectionPoolDataSource \
-  --restype javax.sql.ConnectionPoolDataSource \
+  --datasourceclassname oracle.jdbc.pool.OracleDataSource \
+  --restype javax.sql.DataSource \
   --property user=FSS_CR_NSI:password=Manager1:url="jdbc\:oracle\:thin\:@217.74.37.141\:1521\:FSSDEV" \
   FSS_CR_NSI
 asadmin --user=admin --passwordfile=/tmp/glassfishpwd create-jdbc-resource \
   --connectionpoolid FSS_CR_NSI jdbc/FSS_CR_NSI
 
 asadmin --user=admin --passwordfile=/tmp/glassfishpwd create-jdbc-connection-pool \
-  --datasourceclassname oracle.jdbc.pool.OracleConnectionPoolDataSource \
-  --restype javax.sql.ConnectionPoolDataSource \
+  --datasourceclassname oracle.jdbc.pool.OracleDataSource \
+  --restype javax.sql.DataSource \
   --property user=FSS_CR_PERSONS:password=Manager1:url="jdbc\:oracle\:thin\:@217.74.37.141\:1521\:FSSDEV" \
   FSS_CR_PERSONS
 asadmin --user=admin --passwordfile=/tmp/glassfishpwd create-jdbc-resource \
   --connectionpoolid FSS_CR_PERSONS jdbc/FSS_CR_PERSONS
 
 asadmin --user=admin --passwordfile=/tmp/glassfishpwd create-jdbc-connection-pool \
-  --datasourceclassname oracle.jdbc.pool.OracleConnectionPoolDataSource \
-  --restype javax.sql.ConnectionPoolDataSource \
+  --datasourceclassname oracle.jdbc.pool.OracleDataSource \
+  --restype javax.sql.DataSource \
   --property user=FSS_CR_TSR:password=Manager1:url="jdbc\:oracle\:thin\:@217.74.37.141\:1521\:FSSDEV" \
   FSS_CR_TSR
 asadmin --user=admin --passwordfile=/tmp/glassfishpwd create-jdbc-resource \
