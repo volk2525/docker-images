@@ -1,10 +1,10 @@
 
-FROM glassfish-412-java-8
+FROM glassfish-50-java-8
 
 # Maintainer
 MAINTAINER Konstantin Volkov<kvolkov@ibs.ru>
 
-COPY ojdbc8_g-12.2.0.1.jar /glassfish4/glassfish/domains/domain1/lib/
+COPY ojdbc8_g-12.2.0.1.jar /glassfish5/glassfish/domains/domain1/lib/
 COPY docker-entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 
