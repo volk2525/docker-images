@@ -11,8 +11,9 @@ MAINTAINER Konstantin Volkov<kvolkov@ibs.ru>
 # Set environment variables and default password for user 'admin'
 ENV GLASSFISH_PKG=latest-glassfish.zip \
     GLASSFISH_URL=http://download.oracle.com/glassfish/5.0/promoted/latest-glassfish.zip \
-    GLASSFISH_HOME=/glassfish5 \
-    PATH=$PATH:/glassfish5/bin \
+    GLASSFISH_UNPACK_DIR=/glassfish5 \
+    GLASSFISH_HOME=/glassfish \
+    PATH=$PATH:/glassfish/bin \
     JAVA_HOME=/usr/lib/jvm/java-8-oracle/
 
 # Install packages, download and extract GlassFish
@@ -29,6 +30,7 @@ RUN yum -y install unzip wget less && \
     curl -O $GLASSFISH_URL && \
     unzip -o $GLASSFISH_PKG && \
     rm -f $GLASSFISH_PKG && \
+    mv $GLASSFISH_UNPACK_DIR $GLASSFISH_HOME && \
     yum -y remove unzip && \
     yum clean all
 
