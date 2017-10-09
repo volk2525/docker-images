@@ -11,3 +11,5 @@
 Удалить ранее созданный образ
 $ sudo docker image rm 235fd6900aa5
 
+asadmin  set-log-levels org.springframework=FINEST
+asadmin  set-log-levels java.util.logging.ConsoleHandler=FINEST
